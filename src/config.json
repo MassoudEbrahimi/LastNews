@@ -1,0 +1,8 @@
+{
+    "api_post": "http://127.0.0.1:5000/news/add",
+    "api_users": "http://127.0.0.1:5000/user/add",
+    "api_getUsers": "http://127.0.0.1:5000/users",
+    "api_getCategory": "http://127.0.0.1:5000/category",
+    "api_getPosts": "http://127.0.0.1:5000/news",
+    "api_getTokenAuth": "http://127.0.0.1:5000/token/auth"
+}

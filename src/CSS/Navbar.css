@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Badr";
+  src: url(../Font/Badr.com.ttf);
+}
+@font-face {
+  font-family: "Davat";
+  src: url(../Font/Davat.ttf);
+}
+@font-face {
+  font-family: "Yekan";
+  src: url(../Font/Yekan.ttf);
+}
+.font-link {
+  font-family: "Yekan";
+  font-size: 16px;
+}
+.font-title {
+  font-family: "Badr";
+  font-size: 20px;
+}

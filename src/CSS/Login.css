@@ -1,0 +1,22 @@
+/* html, body {
+    height: 100%;
+} */
+
+.card-position {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+}
+
+body {
+  background-image: url(../Image/LoginPage.jpg);
+}
+
+@font-face {
+  font-family: "Badr";
+  src: url();
+}
+
+.fa {
+  font-size: 30px;
+}

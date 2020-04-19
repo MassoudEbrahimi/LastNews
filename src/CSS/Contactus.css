@@ -1,0 +1,22 @@
+.card-position {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+}
+
+body {
+    background-image: url(../Image/LoginPage.jpg);
+}
+
+@font-face {
+    font-family: "Yekan";
+    src: url(../Font/Yekan.ttf);
+}
+
+.fa-icon {
+    font-size: 25px;
+}
+
+.textarea {
+    resize: none;
+}
