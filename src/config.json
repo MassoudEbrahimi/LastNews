@@ -1,8 +1,13 @@
 {
-    "api_post": "http://127.0.0.1:5000/news/add",
-    "api_users": "http://127.0.0.1:5000/user/add",
-    "api_getUsers": "http://127.0.0.1:5000/users",
-    "api_getCategory": "http://127.0.0.1:5000/category",
+    "-----Post-----": "-------------Post----------------",
+    "api_CreatePost": "http://127.0.0.1:5000/news/add",
     "api_getPosts": "http://127.0.0.1:5000/news",
+    "-----Users-----": "-------------Users----------------",
+    "api_getUsers": "http://127.0.0.1:5000/users",
+    "api_CreateUser": "http://127.0.0.1:5000/users/add",
+    "api_DeleteUsers": "http://127.0.0.1:5000/users/remove",
+    "-----Categpry-----": "-------------Category----------------",
+    "api_getCategory": "http://127.0.0.1:5000/category",
+    "-----Token-----": "-------------Token----------------",
     "api_getTokenAuth": "http://127.0.0.1:5000/token/auth"
 }

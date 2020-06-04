@@ -2,8 +2,8 @@ import React from 'react'
 import { tokenAuth } from '../Service/loginServce'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
-import AuthService from '../Service/AuthService'
-import Cookie from "js-cookie"
+import Cookie from 'js-cookie'
+// import Cookie from "js-cookie"
 
 
 class Loginpage extends React.Component {
@@ -15,13 +15,10 @@ class Loginpage extends React.Component {
         e.preventDefault();
         try {
             const { data } = await tokenAuth(this.state.username, this.state.password)
-            // const { auth } = await tokenAuth()
-            console.log(data)
-            localStorage.setItem('token', data)
-            Cookie.set("token", data)
-            // document.cookie = 'access_token=${[data]}'
-            // Set.cookie: access_token = [value]
-            // docCookies.setItem('access_token', data);
+            debugger
+            console.log(data.Token)
+            Cookie.set('token', data.Token) 
+            // localStorage.setItem('token', data.Token)
             this.props.history.replace('/admin')
         } catch (ex) {
             if (ex.response && ex.response.status === 400)
@@ -31,19 +28,6 @@ class Loginpage extends React.Component {
     componentDidMount() {
         localStorage.clear();
     }
-
-    login = (e) => {
-        e.preventDefault();
-        const credentials = { username: this.state.username, password: this.state.password };
-        AuthService.login(credentials).then(res => {
-            if (res.data.status === 200) {
-                localStorage.setItem("userInfo", JSON.stringify(res.data.result));
-                this.props.history.push('/list-user');
-            } else {
-                this.setState({ message: res.data.message });
-            }
-        });
-    };
 
 
     render() {

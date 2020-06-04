@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { getPosts } from '../../Service/postService'
+import React, { Component, useContext } from 'react';
+import { getPosts, deletePost } from '../../Service/postService'
 import { paginate } from '../../Utils/paginate';
 import Pagination from '../Pagination';
+import { toast } from 'react-toastify'
 
 class AllPosts extends Component {
     state = {
@@ -14,6 +15,21 @@ class AllPosts extends Component {
         const { data } = await getPosts();
         console.log(data.news)
         this.setState({ posts: data.news })
+    }
+    handleDeletePost = async (id) => {
+        const originalPost = this.state.posts
+        const posts = this.state.posts.filter(p => id !== p.id)
+        this.setState({ posts })
+        try {
+            const result = await deletePost(id)
+            if (result.state === 200) {
+                toast.success("با موفقیت حذف گردید")
+            }
+        } catch (ex) {
+            if (ex.response && ex.response.status === 404)
+                toast.error('کاربری با این مشخصات یافت نشد')
+            this.setState({ users: originalPost })
+        }
     }
 
     handlePageChange = page => {

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { getUsers } from '../../Service/postService'
+import { getUser, deleteUser, createUser, updateUser } from '../../Service/postService'
 import { paginate } from '../../Utils/paginate';
 import Pagination from '../Pagination';
+import { toast } from 'react-toastify';
+
 
 class AllUsers extends Component {
     state = {
@@ -11,14 +13,33 @@ class AllUsers extends Component {
     };
 
     async componentDidMount() {
-        const { data } = await getUsers();
+        const { data } = await getUser();
         this.setState({ users: data.users })
     }
-
     handlePageChange = page => {
         this.setState({ currentPage: page });
     };
-
+    handleDeletePost = async id => {
+        const originalPost = this.state.users;
+        const users = this.state.users.filter(p => id !== p.id)
+        this.setState({ users })
+        try {
+            const result = await deleteUser(id)
+            if (result.state === 200) {
+                toast.success("با موفقیت حذف گردید")
+            }
+        } catch (ex) {
+            if (ex.response && ex.response.status === 404)
+                toast.error('کاربری با این مشخصات یافت نشد')
+            this.setState({ users: originalPost })
+        }
+    }
+    handleEditUser = async (data) => {
+        this.props.history.push({
+            pathname: '/admin/edituser',
+            data
+        });
+    };
     getPageData = () => {
         const { pageSize, currentPage, users: allUsers } = this.state;
         const users = paginate(allUsers, currentPage, pageSize);
