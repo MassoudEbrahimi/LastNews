@@ -9,5 +9,5 @@
     "-----Categpry-----": "-------------Category----------------",
     "api_getCategory": "http://127.0.0.1:5000/category",
     "-----Token-----": "-------------Token----------------",
-    "api_getTokenAuth": "http://127.0.0.1:5000/token/auth"
+    "api_getTokenAuth": "http://127.0.0.1:5000/login"
 }

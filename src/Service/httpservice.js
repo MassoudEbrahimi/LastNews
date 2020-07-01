@@ -4,7 +4,8 @@ import Cookie from 'js-cookie'
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
-axios.defaults.headers.common['token'] = Cookie.get('token')
+// axios.defaults.headers.common['token'] = Cookie.get('token')
+axios.defaults.headers.common['Authorization'] = "Bearer  " + Cookie.get('token')
 
 axios.interceptors.response.use(null, error => {
     const expectedError =

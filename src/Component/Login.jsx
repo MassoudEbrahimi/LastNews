@@ -16,8 +16,8 @@ class Loginpage extends React.Component {
         try {
             const { data } = await tokenAuth(this.state.username, this.state.password)
             debugger
-            console.log(data.Token)
-            Cookie.set('token', data.Token) 
+            console.log(data.token)
+            Cookie.set('token', data.token) 
             // localStorage.setItem('token', data.Token)
             this.props.history.replace('/admin')
         } catch (ex) {
