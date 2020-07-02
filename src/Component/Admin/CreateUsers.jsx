@@ -7,32 +7,35 @@ class CreateUser extends Component {
         username: "",
         password: "",
         email: "",
+        userConfirmpassword: "",
         isactive: false,
     };
 
     handleSubmit = async event => {
+        const { username, password, email, userConfirmpassword } = this.state
+        debugger
         event.preventDefault();
-        if (this.state.password === this.state.userConfirmpassword
-            & this.state.username !== "" &
-            this.state.userLastname !== "" &
-            this.state.email !== "") {
-            const result = await createUser(
-                JSON.parse(JSON.stringify(this.state))
-            )
-            if (result.status === 200) toast.success('کاربر جدید با موفقیت ثبت گردید')
-        }
-        else if (this.state.username === "" ||
-            this.state.userLastname === "" ||
-            this.state.email === "") {
-            toast.error('اطلاعات اجباری را وارد کنید')
-        }
+        if (password !== userConfirmpassword
+            || username === "" || email === "") toast.warning("لطفا اطلاعات اجباری را پر کنید")
         else {
-            toast.error('رمز عبور با همدیگر تطابق ندارد')
+            debugger
+            try {
+                const result = await createUser(JSON.parse(JSON.stringify(this.state)))
+                if (result.status === 200) {
+                    toast.success('کاربر جدید با موفقیت ثبت گردید')
+                    this.setState({
+                        username: "",
+                        password: "",
+                        email: "",
+                        userConfirmpassword: "",
+                    })
+                }
+            } catch (ex) {
+                if (ex.response && ex.response.status === 400)
+                    toast.error('لطفا کلیه موارد را پر کنید');
+            }
         }
-
-    };
-
-
+    }
     render() {
         return (
             <form

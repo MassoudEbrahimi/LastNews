@@ -6,11 +6,11 @@ import AllPosts from "./allPosts"
 import CreateUser from "./CreateUsers"
 import AllUsers from "./AllUsers"
 import { Switch, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import EditUser from './editUsers';
 import EditPost from './editPosts';
 import LogOut from './Logout';
+import { ToastContainer } from 'react-toastify';
 
 class Dashboard extends React.Component {
     render() {
