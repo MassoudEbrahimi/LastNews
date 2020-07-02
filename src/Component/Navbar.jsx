@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import Cookie from 'js-cookie'
 class Navigation extends React.Component {
     state = {
         flag: false
     }
-    handleTypenews = (event) => {
-        this.setState({ flag: !event.flag })
+    handleTypenews = () => {
+        this.setState({ flag: !this.state.flag })
     }
     render() {
         const { flag } = this.state
@@ -25,7 +25,11 @@ class Navigation extends React.Component {
                             <Link to="./" className="nav-item nav-link text-light text-nowrap font-link m-1" style={{ backgroundColor: "coral" }}>بین المللی</Link>
                         </div>) : null}
                 </div>
-                <Link to="/login" className="ml-lg-auto ml-md-auto ml-sm-auto m-auto  nav-item nav-link text-light bg-success rounded  font-title">ورود</Link>
+                <Link to={Cookie.get('token') ? "/admin/logout" : "/login"}
+                    className={Cookie.get('token') ? "ml-lg-auto ml-md-auto ml-sm-auto m-auto  nav-item nav-link text-light bg-danger rounded  font-title" :
+                        "ml-lg-auto ml-md-auto ml-sm-auto m-auto  nav-item nav-link text-light bg-success rounded  font-title"}>
+                    {Cookie.get('token') ? "خروج" : "ورود"}
+                </Link>
             </nav>
         )
     }

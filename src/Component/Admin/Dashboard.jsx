@@ -9,6 +9,8 @@ import { Switch, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import EditUser from './editUsers';
+import EditPost from './editPosts';
+import LogOut from './Logout';
 
 class Dashboard extends React.Component {
     render() {
@@ -34,6 +36,10 @@ class Dashboard extends React.Component {
                                         component={AllPosts}
                                     />
                                     <Route
+                                        path="/admin/editPost"
+                                        component={EditPost}
+                                    />
+                                    <Route
                                         path="/admin/create-user"
                                         component={CreateUser}
                                     />
@@ -45,6 +51,11 @@ class Dashboard extends React.Component {
                                         path="/admin/edituser"
                                         component={EditUser}
                                     />
+                                    <Route
+                                        path="/admin/logout"
+                                        component={LogOut}
+                                    />
+
                                 </Switch>
                             </Switch>
                         </main>

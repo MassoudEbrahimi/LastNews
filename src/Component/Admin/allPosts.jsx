@@ -31,6 +31,13 @@ class AllPosts extends Component {
             this.setState({ users: originalPost })
         }
     }
+    handleRedirect = posts => {
+        debugger
+        this.props.history.push({
+            pathname: '/admin/editPost',
+            posts
+        });
+    };
 
     handlePageChange = page => {
         this.setState({ currentPage: page });
@@ -71,7 +78,7 @@ class AllPosts extends Component {
                                 <td>
                                     <button
                                         className="btn btn-primary"
-                                        onClick=""
+                                        onClick={() => this.handleRedirect(post)}
                                     >
                                         ویرایش
                                     </button>
@@ -79,7 +86,7 @@ class AllPosts extends Component {
                                 <td>
                                     <button
                                         className="btn btn-danger"
-                                        onClick=""
+                                        onClick={() => this.handleDeletePost(post.id)}
                                     >
                                         حذف
                                     </button>

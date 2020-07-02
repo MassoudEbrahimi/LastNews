@@ -20,7 +20,7 @@ class AllUsers extends Component {
         this.setState({ currentPage: page });
     };
     handleDeletePost = async id => {
-        const originalPost = this.state.users;
+        const originalUser = this.state.users;
         const users = this.state.users.filter(p => id !== p.id)
         this.setState({ users })
         try {
@@ -31,10 +31,10 @@ class AllUsers extends Component {
         } catch (ex) {
             if (ex.response && ex.response.status === 404)
                 toast.error('کاربری با این مشخصات یافت نشد')
-            this.setState({ users: originalPost })
+            this.setState({ users: originalUser })
         }
     }
-    handleRedirect  =  data => {
+    handleRedirect = data => {
         debugger
         this.props.history.push({
             pathname: '/admin/edituser',
@@ -83,7 +83,7 @@ class AllUsers extends Component {
                                 <td>
                                     <button
                                         className="btn btn-danger"
-                                        onClick={this.handleDeletePost}
+                                        onClick={() => this.handleDeletePost(user.id)}
                                     >
                                         حذف
                                     </button>
