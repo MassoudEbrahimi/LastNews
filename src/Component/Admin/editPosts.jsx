@@ -17,7 +17,7 @@ class EditPost extends Component {
     async componentDidMount() {
         const { data } = await getCategory();
         const { posts } = this.props.location
-        debugger
+
         if (!posts) return this.props.history.push('/admin/allposts')
         this.setState({
             getCategory: data.newscategory,
@@ -39,9 +39,9 @@ class EditPost extends Component {
         this.setState({ category_id })
     }
     handleSubmit = async e => {
-        const { user_id, title, created_date, body, category_id, image_url, is_deleted } = this.state
+        const { id, title, created_date, body, category_id, image_url, is_deleted } = this.state
         const new_post = {
-            user_id,
+            id,
             title,
             created_date,
             body,
@@ -55,15 +55,16 @@ class EditPost extends Component {
                 JSON.parse(JSON.stringify(new_post))
             );
 
-            if (result.status === 200) toast.success('پست با موفقیت ویرایش شد');
+            if (result.status === 200) {
+                toast.success('پست با موفقیت ویرایش شد');
+                this.props.history.push('/admin/allposts')
+            }
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 toast.error('لطفا موارد اجباری را پر کنید');
-                this.props.history.push('/admin/allposts')
+
             }
         }
-
-
     };
 
     render() {

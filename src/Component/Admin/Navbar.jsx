@@ -21,7 +21,7 @@ class Navigation extends React.Component {
     }
     allUsers = async () => {
         const result = await getUser()
-        debugger
+      
         this.setState({ users: result.data.users })
 
     }

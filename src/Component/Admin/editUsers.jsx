@@ -12,7 +12,7 @@ class EditUser extends Component {
     };
     componentDidMount() {
         const { data } = this.props.location;
-        debugger
+
         if (!data) return this.props.history.push('/admin/allUsers')
 
         this.setState({

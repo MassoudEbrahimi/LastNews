@@ -9,14 +9,14 @@ export function createPost(data) {
 export function getPosts() {
     return http.post(config.api_getPosts)
 }
-export function deletePost(id) {
-    
-    return http.delete(config.api_DeletePost + "/" + id)
+export function deletePost(data) {
+    return http.post(config.api_DeletePost, data)
 }
 export function updatePost(data) {
-    const body = { ...data }
-    delete body.id
-    return http.post(`${config.api_editPost}/${data.id}`, body)
+    // const body = { ...data }
+    // delete body.id
+    // return http.post(`${config.api_editPost}/${data.id}`, body)
+    return http.post(config.api_editPost, data)
 
 }
 //****************************************************************

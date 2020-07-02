@@ -40,7 +40,6 @@ class CreatePost extends Component {
         if (title === "" && created_date === "" && image_url === "" && body === "") toast.warning("لطفا اطلاعات اجباری را وارد کنید")
         else
             try {
-                debugger
                 const result = await createPost(
                     JSON.parse(JSON.stringify(newpost))
                 );

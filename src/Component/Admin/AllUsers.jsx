@@ -35,7 +35,8 @@ class AllUsers extends Component {
         }
     }
     handleRedirect = data => {
-        debugger
+    
+
         this.props.history.push({
             pathname: '/admin/edituser',
             data
