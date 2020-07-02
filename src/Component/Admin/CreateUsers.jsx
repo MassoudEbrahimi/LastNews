@@ -11,7 +11,6 @@ class CreateUser extends Component {
     };
 
     handleSubmit = async event => {
-
         event.preventDefault();
         if (this.state.password === this.state.userConfirmpassword
             & this.state.username !== "" &

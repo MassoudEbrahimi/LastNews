@@ -28,7 +28,7 @@ class CreatePost extends Component {
     handleSubmit = async e => {
         e.preventDefault();
         const { user_id, title, created_date, body, category_id, image_url, is_deleted } = this.state
-        const new_post = {
+        const newpost = {
             user_id,
             title,
             created_date,
@@ -37,18 +37,28 @@ class CreatePost extends Component {
             image_url,
             is_deleted
         }
-
-        try {
-            
-            const result = await createPost(
-                JSON.parse(JSON.stringify(new_post))
-            );
-
-            if (result.status === 200) toast.success('پست با موفقیت ساخته شد');
-        } catch (ex) {
-            if (ex.response && ex.response.status === 400)
-                toast.error('لطفا کلیه موارد را پر کنید');
-        }
+        if (title === "" && created_date === "" && image_url === "" && body === "") toast.warning("لطفا اطلاعات اجباری را وارد کنید")
+        else
+            try {
+                debugger
+                const result = await createPost(
+                    JSON.parse(JSON.stringify(newpost))
+                );
+                if (result.status === 200) {
+                    toast.success('پست با موفقیت ساخته شد');
+                    this.setState({
+                        title: "",
+                        created_date: "",
+                        category_id: "",
+                        body: "",
+                        is_deleted: false,
+                        image_url: '',
+                    })
+                }
+            } catch (ex) {
+                if (ex.response && ex.response.status === 400)
+                    toast.error('لطفا کلیه موارد را پر کنید');
+            }
 
 
     };
@@ -80,7 +90,9 @@ class CreatePost extends Component {
                         </div>
                         <div className="col-7">
                             {/* <CalendarJalali /> */}
-                            <DatePicker className="form-control input-md m-2"
+                            <DatePicker
+                                isGregorian={false}
+                                className="form-control input-md m-2"
                                 onChange={value => this.setState({ created_date: value.format("YYYY/MM/DD") })}
                                 value={this.state.value}
                             />

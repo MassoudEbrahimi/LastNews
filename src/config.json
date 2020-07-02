@@ -1,6 +1,6 @@
 {
     "-----Post-----": "-------------Post----------------",
-    "api_CreatePost": "http://127.0.0.1:5000/news/add",
+    "api_createPost": "http://127.0.0.1:5000/news/add",
     "api_getPosts": "http://127.0.0.1:5000/news",
     "api_editPost": "http://127.0.0.1:5000/news/edit",
     "api_DeletePost": "http://127.0.0.1:5000/news/remove",

@@ -4,13 +4,13 @@ import config from '../../src/config.json'
 //****************************************************************
 //*************************Post***********************************
 export function createPost(data) {
-    
-    return http.post(config.CreatePost, data)
+    return http.post(config.api_createPost, data)
 }
 export function getPosts() {
     return http.post(config.api_getPosts)
 }
 export function deletePost(id) {
+    
     return http.delete(config.api_DeletePost + "/" + id)
 }
 export function updatePost(data) {
