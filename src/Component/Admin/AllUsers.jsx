@@ -34,7 +34,8 @@ class AllUsers extends Component {
             this.setState({ users: originalPost })
         }
     }
-    handleEditUser = async (data) => {
+    handleRedirect  =  data => {
+        debugger
         this.props.history.push({
             pathname: '/admin/edituser',
             data
@@ -74,7 +75,7 @@ class AllUsers extends Component {
                                 <td>
                                     <button
                                         className="btn btn-primary"
-                                        onClick=""
+                                        onClick={() => this.handleRedirect(user)}
                                     >
                                         ویرایش
                                     </button>
@@ -82,7 +83,7 @@ class AllUsers extends Component {
                                 <td>
                                     <button
                                         className="btn btn-danger"
-                                        onClick=""
+                                        onClick={this.handleDeletePost}
                                     >
                                         حذف
                                     </button>

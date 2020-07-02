@@ -25,7 +25,10 @@ export function getUser() {
 export function deleteUser(id) {
     return http.delete(config.api_DeleteUsers + "/" + id)
 }
-export function updateUser(data){
+export function updateUser(data) {
+    const body = { ...data }
+    delete body.id
+    return http.post(`${config.api_editUser}/${data.id}`, body)
 }
 
 export function getCategory() {

@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
-import { createUser } from '../../Service/postService';
+import { updateUser } from '../../Service/postService';
 import { toast } from "react-toastify"
 
-class CreateUser extends Component {
+class EditUser extends Component {
     state = {
+        id: "",
         username: "",
         password: "",
         email: "",
         isactive: false,
     };
+    componentDidMount() {
+        const { data } = this.props.location;
+        debugger
+        if (!data) return this.props.history.push('/admin/allUsers')
+
+        this.setState({
+            id: data.id,
+            username: data.username,
+            password: data.password,
+            email: data.email
+        })
+    }
 
     handleSubmit = async event => {
 
@@ -17,10 +30,13 @@ class CreateUser extends Component {
             & this.state.username !== "" &
             this.state.userLastname !== "" &
             this.state.email !== "") {
-            const result = await createUser(
+            const result = await updateUser(
                 JSON.parse(JSON.stringify(this.state))
             )
-            if (result.status === 200) toast.success('کاربر جدید با موفقیت ثبت گردید')
+            if (result.status === 200) {
+                toast.success('کاربر  با موفقیت ویرایش گردید')
+                this.props.history.push('/admin/allUsers')
+            }
         }
         else if (this.state.username === "" ||
             this.state.userLastname === "" ||
@@ -32,7 +48,7 @@ class CreateUser extends Component {
         }
 
     };
-  
+
 
     render() {
         return (
@@ -81,10 +97,10 @@ class CreateUser extends Component {
                     value={this.state.userConfirmpassword}
                     onChange={e => this.setState({ userConfirmpassword: e.target.value })}
                 />
-                <button className="btn btn-success m-5">ساخت کاربر جدید</button>
+                <button className="btn btn-success m-5">ویرایش</button>
             </form>
         );
     }
 }
 
-export default CreateUser;
+export default EditUser;

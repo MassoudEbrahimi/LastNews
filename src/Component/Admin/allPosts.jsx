@@ -27,7 +27,7 @@ class AllPosts extends Component {
             }
         } catch (ex) {
             if (ex.response && ex.response.status === 404)
-                toast.error('کاربری با این مشخصات یافت نشد')
+                toast.error('پستی با این مشخصات یافت نشد')
             this.setState({ users: originalPost })
         }
     }

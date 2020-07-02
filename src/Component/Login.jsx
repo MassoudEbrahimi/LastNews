@@ -16,10 +16,13 @@ class Loginpage extends React.Component {
         try {
             const { data } = await tokenAuth(this.state.username, this.state.password)
             debugger
-            console.log(data.token)
-            Cookie.set('token', data.token) 
+
+            Cookie.set('token', data.token)
             // localStorage.setItem('token', data.Token)
             this.props.history.replace('/admin')
+            setTimeout(() => {
+                window.location.reload()
+            }, 500);
         } catch (ex) {
             if (ex.response && ex.response.status === 400)
                 toast.error('نام کاربری یا رمز ورود اشتباه است')
