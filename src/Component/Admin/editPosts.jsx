@@ -23,10 +23,10 @@ class EditPost extends Component {
             getCategory: data.newscategory,
             body: posts.body,
             id: posts.id,
-            category_id : posts.categoryname,
+            category_id: posts.categoryname,
             created_date: posts.create_date,
-            image_url : posts.image_url,
-            title : posts.title
+            image_url: posts.image_url,
+            title: posts.title
 
         })
 
@@ -77,6 +77,7 @@ class EditPost extends Component {
                     عنوان پست
                 </label>
                 <input
+                    autoComplete="off"
                     id="txtTitle"
                     name="title"
                     type="text"
@@ -119,6 +120,7 @@ class EditPost extends Component {
 
                 </div >
                 <input
+                    autoComplete="off"
                     id="txtImageUrl"
                     name="image_url"
                     type="text"
@@ -131,6 +133,7 @@ class EditPost extends Component {
                 />
 
                 <textarea
+                    autoComplete="off"
                     name="body"
                     className="form-control m-2"
                     rows="5"

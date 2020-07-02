@@ -16,13 +16,7 @@ class CreatePost extends Component {
     };
     async componentDidMount() {
         const { data } = await getCategory();
-        // const category = [];
-        // for (var i = 0; i < result.length; i++) {
-        //     category.push(result[i].title)
-        // }
-        // this.allCategory = category
         this.setState({ getCategory: data.newscategory })
-
     }
     handleOptionCategory = event => {
 
@@ -32,6 +26,7 @@ class CreatePost extends Component {
         this.setState({ category_id })
     }
     handleSubmit = async e => {
+        e.preventDefault();
         const { user_id, title, created_date, body, category_id, image_url, is_deleted } = this.state
         const new_post = {
             user_id,
@@ -42,8 +37,9 @@ class CreatePost extends Component {
             image_url,
             is_deleted
         }
-        e.preventDefault();
+
         try {
+            
             const result = await createPost(
                 JSON.parse(JSON.stringify(new_post))
             );
@@ -68,6 +64,7 @@ class CreatePost extends Component {
                     عنوان پست
                 </label>
                 <input
+                    autoComplete="off"
                     id="txtTitle"
                     name="title"
                     type="text"
@@ -110,6 +107,7 @@ class CreatePost extends Component {
 
                 </div >
                 <input
+                    autoComplete="off"
                     id="txtImageUrl"
                     name="image_url"
                     type="text"
@@ -122,6 +120,7 @@ class CreatePost extends Component {
                 />
 
                 <textarea
+                    autoComplete="off"
                     name="body"
                     className="form-control m-2"
                     rows="5"

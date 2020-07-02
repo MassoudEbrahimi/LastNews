@@ -32,7 +32,7 @@ class CreateUser extends Component {
         }
 
     };
-  
+
 
     render() {
         return (
@@ -44,6 +44,7 @@ class CreateUser extends Component {
                     مشخصات فردی
                 </label>
                 <input
+                    autoComplete="off"
                     id="txtname"
                     name="username"
                     type="text"
@@ -53,6 +54,7 @@ class CreateUser extends Component {
                     onChange={e => this.setState({ username: e.target.value })}
                 />
                 <input
+                    autoComplete="off"
                     id="txtEmail"
                     name="userEmail"
                     type="email"
@@ -64,7 +66,7 @@ class CreateUser extends Component {
                     }
                 />
                 <input
-
+                    autoComplete="off"
                     name="userPassword"
                     type="password"
                     placeholder="رمز عبور"
@@ -73,7 +75,7 @@ class CreateUser extends Component {
                     onChange={e => this.setState({ password: e.target.value })}
                 />
                 <input
-
+                    autoComplete="off"
                     name="userPassword"
                     type="password"
                     placeholder="تکرار رمز عبور"

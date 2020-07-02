@@ -4,6 +4,7 @@ import config from '../../src/config.json'
 //****************************************************************
 //*************************Post***********************************
 export function createPost(data) {
+    
     return http.post(config.CreatePost, data)
 }
 export function getPosts() {
